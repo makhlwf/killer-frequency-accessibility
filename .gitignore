@@ -25,3 +25,6 @@
 __pycache__/
 .env
 .env.*
+
+/*.png
+/show-choice-assembly.txt

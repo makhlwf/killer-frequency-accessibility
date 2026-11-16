@@ -1,0 +1,20 @@
+{
+  "platform": "Windows x64",
+  "engine": "Unity IL2CPP",
+  "metadata_version": 29,
+  "status": "Known local test build; other builds unverified",
+  "files": {
+    "GameAssembly.dll": {
+      "sha256": "10adb9d37bd86f58f8c30f23dbfff37a55d9b7c4c50319f95341c9c2139a1f66",
+      "bytes": 57754624
+    },
+    "KillerFrequency.exe": {
+      "sha256": "7ed842cd9b60a108c8e808c83388902c35f9b3b71e4dfa3f3ae033331faa78de",
+      "bytes": 860672
+    },
+    "KillerFrequency_Data/il2cpp_data/Metadata/global-metadata.dat": {
+      "sha256": "8d5eb32e380f5c9f369bc636360548e4a4615456b1f63d3330b2dc14ccc9242e",
+      "bytes": 12941596
+    }
+  }
+}

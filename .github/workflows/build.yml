@@ -1,0 +1,40 @@
+name: Build and test
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: msys2/setup-msys2@v2
+        id: msys2
+        with:
+          msystem: UCRT64
+          update: true
+          cache: true
+          install: mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-binutils
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Build and run native tests
+        shell: pwsh
+        run: |
+          $env:PATH = "${{ steps.msys2.outputs.msys2-location }}\ucrt64\bin;$env:PATH"
+          ./build.ps1 -OutputDirectory build/release/bin
+      - name: Package player release
+        shell: pwsh
+        run: ./scripts/package.ps1
+      - uses: actions/upload-artifact@v7
+        with:
+          name: KillerFrequencyAccessibility-windows-x64
+          path: |
+            dist/KillerFrequencyAccessibility.zip
+            dist/KillerFrequencyAccessibility.zip.sha256
+          if-no-files-found: error

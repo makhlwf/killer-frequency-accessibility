@@ -1,0 +1,33 @@
+name: Bug or accessibility barrier
+description: Report one reproducible problem or missing accessible interaction.
+title: "[Barrier] "
+body:
+  - type: markdown
+    attributes:
+      value: "Include a small redacted excerpt only. Do not upload game files, extracted assets, screenshots, saves, or raw dumps. Mark story spoilers."
+  - type: input
+    id: build
+    attributes:
+      label: Mod package and game build
+      description: Include release/checkpoint identity, store, language, and game fingerprint if known.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Scene and exact steps
+      description: Give one reproducible sequence and relevant player state.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected result and actual speech or behavior
+      description: Distinguish a requested action from a confirmed result.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant log excerpt and recovery
+      description: Remove private paths; mention whether cancel/restart restored control.
